@@ -8,45 +8,81 @@
   
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+<link href="./style.css" rel="stylesheet" />
+
+  <script defer src="./main.js"></script> <!-- JS file link with defer -->
 </head>
 <body>
 
-  <!-- Sign-up form start -->
+  <main>
 
-  Stay updated!
+  <article class="card-container">
 
-  Join 60,000+ product managers receiving monthly updates on:
+    <figure class="image-container">
+      <picture>
+        <source media="(min-width: 48rem)" srcset="./assets/images/illustration-sign-up-desktop.svg">
+        <img src="./assets/images/illustration-sign-up-mobile.svg" alt="Gabrielle Chanel Essence Eau de Parfum - elegant glass bottle with gold liquid surrounded by green tropical leaves" class="product-image">
+      </picture>
+    </figure>
+    
+    <!-- Sign-up form start -->
+   <section class="signup-container">
+  <h1>Stay updated!</h1>
 
-  Product discovery and building what matters
-  Measuring to ensure updates are a success
-  And much more!
+   Join 60,000+ product managers receiving monthly updates on:
 
-  Email address
-  email@company.com
+  <ul>
+    <li>Product discovery and building what matters</li>
+    <li>Measuring to ensure updates are a success</li>
+    <li>And much more!</li>
+  </ul>
 
-  Subscribe to monthly newsletter
+ <form id="form" novalidate>  <!-- Prevent default validation-->
+  <div>
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="email" placeholder="email@company.com"
+  required oninput="validateEmailInput()">
+    <span aria-live="polite" id="email-error"></span>
+  </div>
+  
+  <div class="button-container">
+  <button type="submit" class="btn-primary">Subscribe to monthly newsletter</button>
+  </div>
+
+   </form>
+   </section>
 
   <!-- Sign-up form end -->
 
   <!-- Success message start -->
 
-  Thanks for subscribing!
+  <article id="success-card" class="card-container success-message" hidden>
+  
+  <figure class="success-icon-container">
+      <img src="./assets/images/icon-success.svg" alt="Red checkmark icon" class="success-icon">  
+    </figure>
 
-  A confirmation email has been sent to ash@loremcompany.com. 
-  Please open it and click the button inside to confirm your subscription.
+   <section class="confirmation-message">
+ 
+  <h1>Thanks for subscribing!</h1>
 
-  Dismiss message
+ 
+  <p> confirmation email has been sent to <span id="email-display">ash@loremcompany.com</span>. 
+  Please open it and click the button inside to confirm your subscription.</p>
+  
+  
+  <button id="dismiss-btn" type="button" class="btn-primary">Dismiss message</button>
+  
+  </section>
+
+  </article>
 
   <!-- Success message end -->
   
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+
 </body>
 </html>
