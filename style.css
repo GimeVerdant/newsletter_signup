@@ -1,29 +1,32 @@
+/* ===========================
+   CSS VARIABLES
+   =========================== */
 :root {
+  /* Colors */
   --color-white: #FFFFFF;
   --color-grey: #949494;
   --color-blue-800: #242742;
   --color-blue-700: #36384D;
   --color-red: #FF6155;
+  
+  /* Gradients */
   --gradient: linear-gradient(to right, #FF6A3A, #FF527B);
-} 
-
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('./assets/Roboto-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-   font-display: swap;
+  
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-bold: 700;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.6rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('./assets/Roboto-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* ===========================
+   RESET & BASE STYLES
+   =========================== */
 * {
   margin: 0;
   padding: 0;
@@ -33,88 +36,45 @@
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-regular);
   color: var(--color-blue-800);
   background-color: var(--color-white);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
-}
-
-.signup-container > * + * {
-  margin-top: 1.6rem;
-}
-
-form > * + * {
-  margin-top: 1.6rem;
-}
-
-input[type="email"] {
- width: 100%;
   padding: 1rem;
-  font-size: 1rem;
-  color: var(--color-blue-800);
-  border: 0.0625rem solid var(--color-grey);
-  border-radius: 0.5rem;
-  outline: none;
-
 }
 
-/* Placeholder styling */
-.email-input::placeholder {
-  color: var(--color-grey);
-  opacity: 0.7;
-}
-
-/* Label styling */
-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-blue-800);
-}
-
-.btn-primary {
-  background: var(--color-blue-800);
-  color: var(--color-white);
-  width: 100%;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn-primary:hover {
-   background: var(--gradient);
-}
-
-
-/* MOBILE  */
-
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
 h1 {
   font-size: 2.5rem;
-
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  color: var(--color-blue-800);
 }
 
+p {
+  line-height: 1.5;
+}
+
+/* ===========================
+   LAYOUT - CARD CONTAINER
+   =========================== */
 .card-container {
   background-color: var(--color-white);
   border-radius: 2.25rem;
   width: 100%;
+  max-width: 23.4375rem;
   display: flex;
   flex-direction: column;
-
-
 }
 
 .image-container {
   margin-bottom: 1.5rem;
-  border-radius: 1rem;
+  border-radius: 0 0 1rem 1rem;
   overflow: hidden;
   order: 1;
 } 
@@ -126,10 +86,20 @@ h1 {
 }
 
 .signup-container {
-  padding: 2rem;
-  order: 2;   
+  padding: var(--spacing-lg);
+  order: 2;
 }
 
+.signup-container > * + * {
+  margin-top: var(--spacing-md);
+}
+
+/* ===========================
+   LIST STYLING
+   =========================== */
+ul {
+  list-style: none;
+}
 
 ul li {
   display: flex;
@@ -140,64 +110,198 @@ ul li {
 
 ul li::before {
   content: url('./assets/images/icon-list.svg');
-  flex-shrink: 0; /* Prevents icon from shrinking */
+  flex-shrink: 0;
+  margin-top: 0.125rem;
 }
 
-#success-card {
-  display: none;
+/* ===========================
+   FORM STYLING
+   =========================== */
+form {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 4rem;
+  gap: var(--spacing-md);
 }
 
-.confirmation-message > * + * {
-  margin-top: 1.6rem;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+form label {
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-blue-800);
+}
+
+.email-input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-blue-800);
+  border: 0.0625rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.email-input::placeholder {
+  color: var(--color-grey);
+  opacity: 0.7;
+}
+
+.email-input:focus {
+  border-color: var(--color-blue-800);
+}
+
+/* ===========================
+   ERROR STATE STYLING
+   =========================== */
+
+/* Error message text - appears on the right side */
+.error-message {
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-red);
+  display: none;
+}
+
+/* Show error message when it has content */
+.error-message:not(:empty) {
+  display: block;
+}
+
+/* Error state for input field */
+.email-input.error {
+  border: 1px solid var(--color-red);
+  background-color: rgba(255, 97, 85, 0.15);
+  color: var(--color-red);
+}
+
+/* Keep placeholder visible but in red when error state */
+.email-input.error::placeholder {
+  color: var(--color-red);
+  opacity: 0.5;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn-primary {
+  background: var(--color-blue-800);
+  color: var(--color-white);
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--gradient);
+  box-shadow: 0 1rem 2rem rgba(255, 97, 85, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ===========================
+   SUCCESS MESSAGE
+   =========================== */
+#success-card {
+  display: none;
+  padding: var(--spacing-xl);
+  max-width: 31.5rem;
+}
+
+#success-card[aria-hidden="false"] {
+  display: flex;
+}
+
+.confirmation-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .success-icon-container {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 2rem;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: var(--spacing-sm);
 }
 
-#dismiss-btn {
+.success-icon {
   width: 100%;
-  align-self: flex-end;
+  height: 100%;
 }
-@media screen and (min-width: 48rem) {
 
+#email-display {
+  font-weight: var(--fw-bold);
+}
+
+/* ===========================
+   RESPONSIVE - TABLET/DESKTOP
+   =========================== */
+@media screen and (min-width: 48rem) {
+  
   body {
     background-color: var(--color-blue-700);
-  }
-  .card-container {
-    max-width: 56.5rem;
     padding: 2rem;
-    display: flex;
+  }
+  
+  .card-container {
+    max-width: 58rem;
+    padding: 1.5rem;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
-
+    gap: 4rem;
   }
 
   h1 {
-  font-size: 3.5rem;
-
-}
+    font-size: 3.5rem;
+  }
   
   .image-container {
     width: 50%;
     margin-bottom: 0;
     flex: 1;
-    order:2;
-  
-    
+    order: 2;
+    border-radius: 1rem;
   }
 
   .signup-container {
     flex: 1;
-    order:1;
+    order: 1;
+    padding: 2.5rem;
+  }
+
+  #success-card {
+    flex-direction: column;
+    padding: 3rem 4rem;
+  }
+
+  #dismiss-btn {
+    margin-top: var(--spacing-sm);
+  }
 }
 
-
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+[hidden] {
+  display: none !important;
 }
