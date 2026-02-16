@@ -25,7 +25,7 @@
 }
 
 /* ===========================
-   RESET & BASE STYLES
+   RESET
    =========================== */
 * {
   margin: 0;
@@ -33,6 +33,9 @@
   box-sizing: border-box;
 }
 
+/* ===========================
+   BASE STYLES
+   =========================== */
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-size: 1rem;
@@ -61,7 +64,7 @@ p {
 }
 
 /* ===========================
-   LAYOUT - CARD CONTAINER
+   LAYOUT
    =========================== */
 .card-container {
   background-color: var(--color-white);
@@ -95,7 +98,7 @@ p {
 }
 
 /* ===========================
-   LIST STYLING
+   LISTS
    =========================== */
 ul {
   list-style: none;
@@ -115,7 +118,7 @@ ul li::before {
 }
 
 /* ===========================
-   FORM STYLING
+   FORMS
    =========================== */
 form {
   display: flex;
@@ -142,6 +145,7 @@ form label {
   color: var(--color-blue-800);
 }
 
+/* Input Fields */
 .email-input {
   width: 100%;
   padding: var(--spacing-sm);
@@ -159,15 +163,23 @@ form label {
   opacity: 0.7;
 }
 
+/* Input States */
 .email-input:focus {
   border-color: var(--color-blue-800);
 }
 
-/* ===========================
-   ERROR STATE STYLING
-   =========================== */
+.email-input.error {
+  border: 1px solid var(--color-red);
+  background-color: rgba(255, 97, 85, 0.15);
+  color: var(--color-red);
+}
 
-/* Error message text - appears on the right side */
+.email-input.error::placeholder {
+  color: var(--color-red);
+  opacity: 0.5;
+}
+
+/* Error Messages */
 .error-message {
   font-size: 0.75rem;
   font-weight: var(--fw-bold);
@@ -175,22 +187,8 @@ form label {
   display: none;
 }
 
-/* Show error message when it has content */
 .error-message:not(:empty) {
   display: block;
-}
-
-/* Error state for input field */
-.email-input.error {
-  border: 1px solid var(--color-red);
-  background-color: rgba(255, 97, 85, 0.15);
-  color: var(--color-red);
-}
-
-/* Keep placeholder visible but in red when error state */
-.email-input.error::placeholder {
-  color: var(--color-red);
-  opacity: 0.5;
 }
 
 /* ===========================
@@ -254,13 +252,29 @@ form label {
 }
 
 /* ===========================
-   RESPONSIVE - TABLET/DESKTOP
+   UTILITY CLASSES
    =========================== */
-@media screen and (min-width: 48rem) {
-  
-  body {
+[hidden] {
+  display: none !important;
+}
+
+/* ===========================
+   MEDIA QUERIES
+   =========================== */
+
+   @media screen and (min-width: 40rem) {
+    body {
     background-color: var(--color-blue-700);
     padding: 2rem;
+  }
+   }
+
+
+@media screen and (min-width: 48rem) {
+  
+  
+  h1 {
+    font-size: 3.5rem;
   }
   
   .card-container {
@@ -269,10 +283,6 @@ form label {
     flex-direction: row;
     align-items: center;
     gap: 4rem;
-  }
-
-  h1 {
-    font-size: 3.5rem;
   }
   
   .image-container {
@@ -297,11 +307,4 @@ form label {
   #dismiss-btn {
     margin-top: var(--spacing-sm);
   }
-}
-
-/* ===========================
-   UTILITY CLASSES
-   =========================== */
-[hidden] {
-  display: none !important;
 }

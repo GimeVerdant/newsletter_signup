@@ -1,42 +1,77 @@
-let subscribeForm = document.getElementById("form");
+// ===========================
+// GET DOM ELEMENTS
+// ===========================
+const subscribeForm = document.getElementById("form");
+const emailInput = document.getElementById("email");
+const errorMessage = document.getElementById("email-error");
+const signupCard = document.querySelector(".card-container");
+const successCard = document.getElementById("success-card");
+const emailDisplay = document.getElementById("email-display");
+const dismissBtn = document.getElementById("dismiss-btn");
 
-subscribeForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // prevent form from submitting and refreshing page
-
-
-
-  
-function validateEmailInput() {
-  const emailInput = document.getElementById('email').value;
-  const feedbackElement = document.getElementById('email-error');
+// ===========================
+// EMAIL VALIDATION FUNCTION
+// ===========================
+function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (emailRegex.test(emailInput)) {
-    feedbackElement.textContent = ""; // Email is valid
-  } else {
-    feedbackElement.textContent = "Please enter a valid email address.";
-  }
+  return emailRegex.test(email);
 }
 
-
-
-  let email = document.getElementById("email");
-
-
-  if (email.value == "") {
-    alert("Ensure you input a value in the email field!");
-
+// ===========================
+// FORM SUBMIT HANDLER
+// ===========================
+subscribeForm.addEventListener("submit", (e) => {
+  // Step 1: Prevent default form behavior
+  e.preventDefault();
+  
+  // Step 2: Get email value and trim whitespace
+  const email = emailInput.value.trim();
+  
+  // Step 3: Validate the email
+  const isValid = validateEmail(email);
+  
+  if (!isValid || email === "") {
+    // Step 4: Email is INVALID - show error state
+    emailInput.classList.add("error");
+    errorMessage.textContent = "Valid email required";
   } else {
-    // perform operation with form input
-    alert("This form has been successfully submitted!");
+    // Step 5: Email is VALID - clear any error state
+    emailInput.classList.remove("error");
+    errorMessage.textContent = "";
     
-    console.log(
-      `This form has an email of ${email.value}`
-    );
-
-    email.value = "";
+    // Step 6: Show success state
+    signupCard.setAttribute("hidden", "");
+    successCard.removeAttribute("hidden");
+    successCard.setAttribute("aria-hidden", "false");
+    
+    // Insert user's email into success message
+    emailDisplay.textContent = email;
   }
 });
 
-document.querySelector('.success').style.display = 'block';
-document.querySelector('.form-section').style.display = 'none';
+// ===========================
+// DISMISS BUTTON HANDLER
+// ===========================
+dismissBtn.addEventListener("click", () => {
+  // Step 7: Hide success card and show signup form again
+  successCard.setAttribute("hidden", "");
+  successCard.setAttribute("aria-hidden", "true");
+  signupCard.removeAttribute("hidden");
+  
+  // Optional: Clear the form
+  emailInput.value = "";
+  emailInput.classList.remove("error");
+  errorMessage.textContent = "";
+});
+
+// ===========================
+// OPTIONAL: REAL-TIME VALIDATION
+// ===========================
+emailInput.addEventListener("input", () => {
+  // Clear error state as user types
+  if (emailInput.classList.contains("error")) {
+    emailInput.classList.remove("error");
+    errorMessage.textContent = "";
+  }
+});
+
