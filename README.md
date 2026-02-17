@@ -73,7 +73,7 @@ I used Claude and Claude Code
 -  asked Claude Code to review the code I wrote and give me anotated feedback
 -  used Claude Code to do a final check on the accessibility of the code - I decided which issues should be ignored (AI doesnt always get it right) and which fixed 
 e.g 
-Ignore - AI thinks there are two h1s - but they never show at the same time 
+Ignore - AI thinks there are two h1s - but they never show at the same time ( main view and success message view)
 Accept - Visible focus style to buttons, add aria-live to success card
 
 
