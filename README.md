@@ -66,12 +66,12 @@ More JS
 ### AI Collaboration
 
 I used Claude and Claude Code
--I thought on what I needed to do to ask, submit, validate and confirm the email 
--I asked Claude to give me steps I would need to take to validate the form - Giving me NO CODE 
--Based on the answer, looked up JS documentation on how to code the steps.
--I taped together a solution based on solutions I found on different pages and documentation
--I asked Claude Code to review the code I wrote and give me anotated feedback
--I used Claude Code to do a final check on the accessibility of the code - I decided which issues should be ignored (AI doesnt always get it right) and which fixed 
+- I thought on what I needed to do to ask, submit, validate and confirm the email 
+- I asked Claude to give me steps I would need to take to validate the form - Giving me NO CODE 
+- Based on the answer, looked up JS documentation on how to code the steps.
+- I taped together a solution based on solutions I found on different pages and documentation
+-  asked Claude Code to review the code I wrote and give me anotated feedback
+-  used Claude Code to do a final check on the accessibility of the code - I decided which issues should be ignored (AI doesnt always get it right) and which fixed 
 e.g 
 Ignore - AI thinks there are two h1s - but they never show at the same time 
 Accept - Visible focus style to buttons, add aria-live to success card
