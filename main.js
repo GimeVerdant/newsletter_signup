@@ -46,6 +46,9 @@ subscribeForm.addEventListener("submit", (e) => {
     
     // Insert user's email into success message
     emailDisplay.textContent = email;
+
+    // Move focus to success card heading
+    successCard.querySelector("h1").focus();
   }
 });
 

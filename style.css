@@ -46,7 +46,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 1rem;
+  
 }
 
 /* ===========================
@@ -76,11 +76,15 @@ p {
 }
 
 .image-container {
-  margin-bottom: 1.5rem;
-  border-radius: 0 0 1rem 1rem;
+  position: relative;
   overflow: hidden;
-  order: 1;
-} 
+  border-radius: 0 0 1rem 1rem; /* Rounded corners on top for mobile */
+  flex: 0 0 100%; /* Full width on mobile */
+  min-height: 200px;
+  width: 100%;
+}
+  
+
 
 .image-container img {
   width: 100%;
@@ -213,6 +217,11 @@ form label {
   box-shadow: 0 1rem 2rem rgba(255, 97, 85, 0.3);
 }
 
+.btn-primary:focus-visible {
+  outline: 3px solid var(--color-blue-800);
+  outline-offset: 3px;
+}
+
 .btn-primary:active {
   transform: scale(0.98);
 }
@@ -262,13 +271,27 @@ form label {
    MEDIA QUERIES
    =========================== */
 
-   @media screen and (min-width: 40rem) {
+
+/* tablet */
+
+   @media screen and (min-width: 30rem) {
+
     body {
     background-color: var(--color-blue-700);
     padding: 2rem;
   }
+
+    .card-container {
+    max-width: 38rem;
+    }
+
+    /* hide black border of the svg*/
+   .image-container img {
+    transform: scale(1.01)
    }
 
+  }
+/* desktop*/
 
 @media screen and (min-width: 48rem) {
   
